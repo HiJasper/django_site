@@ -7,7 +7,7 @@ You can find the example in :
 
 28/11/2014
 
-This Tag:
+This Tag(1.0):
 	use django-admin.py startproject to create a Django project
 	use python manage.py runserver to start the local server 
 	After those two steps, you can check the web by http://127.0.0.1:8000/
