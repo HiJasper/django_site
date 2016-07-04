@@ -6,3 +6,8 @@ You can find the example in :
 	djangobook.py3k.cn/2.0/chapter02/
 
 28/11/2014
+
+This Tag:
+	use django-admin.py startproject to create a Django project
+	use python manage.py runserver to start the local server 
+	After those two steps, you can check the web by http://127.0.0.1:8000/
