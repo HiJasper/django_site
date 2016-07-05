@@ -30,5 +30,8 @@ Tag(1.4)
 	Notes:
 		1.Need change the value of TEMPLATE_DIRS in setting.py
 		2.Use function get_template to get the template from the path of TEMPLATE_DIRS
-
+Tag(1.5)
+	render_to_response was used instead of get_template and HttpResponse
+	Notes:
+		You can use locals() instead of {'current_date':now},but the value of locals() also include the key-value about request
 
