@@ -25,3 +25,10 @@ Tag(1.3)
 			1.The page will not be found if you use \d{1, 2},because the space between 1 and 2
 			2.Use () to pass the parameters
 
+Tag(1.4)
+	Use template module
+	Notes:
+		1.Need change the value of TEMPLATE_DIRS in setting.py
+		2.Use function get_template to get the template from the path of TEMPLATE_DIRS
+
+
