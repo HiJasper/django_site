@@ -35,3 +35,5 @@ Tag(1.5)
 	Notes:
 		You can use locals() instead of {'current_date':now},but the value of locals() also include the key-value about request
 
+Tag(1.6)
+	使用模版继承优化current_datetime.html和hours_ahead.html
