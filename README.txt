@@ -19,3 +19,9 @@ Tag(1.2)
 	Create time web page
 		('^time/$', current_datetime),
 
+Tag(1.3)
+	Create time/plus/(\d{1,2})/ page
+		Notes: 
+			1.The page will not be found if you use \d{1, 2},because the space between 1 and 2
+			2.Use () to pass the parameters
+
