@@ -15,3 +15,7 @@ This Tag(1.0):
 Tag(1.1)
 	Create hello web page
 
+Tag(1.2)
+	Create time web page
+		('^time/$', current_datetime),
+
