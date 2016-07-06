@@ -37,3 +37,63 @@ Tag(1.5)
 
 Tag(1.6)
 	使用模版继承优化current_datetime.html和hours_ahead.html
+
+Tag(2.0)
+	模型：
+		新建project: library 
+		新建app: books
+
+		1.数据库的配置：
+			DATABASES = {
+				'default': {
+					'ENGINE': 'sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+					'NAME': '/home/jasper/Desktop/django/django_site/library/mydata.db',
+					'USER': '',                      # Not used with sqlite3.
+					'PASSWORD': '',                  # Not used with sqlite3.
+					'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+				'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+				}
+			}
+		2.use python manage.py startrapp books建立app
+		3.在models.py中建立模型
+		4.更改setting.py里面关于INSTALLED_APPS和MIDDLEWARE_CLASSES的部分
+			MIDDLEWARE_CLASSES = (
+				#'django.middleware.common.CommonMiddleware',
+				#'django.contrib.sessions.middleware.SessionMiddleware',
+				#'django.middleware.csrf.CsrfViewMiddleware',
+				#'django.contrib.auth.middleware.AuthenticationMiddleware',
+				#'django.contrib.messages.middleware.MessageMiddleware',
+			)
+
+
+			INSTALLED_APPS = (
+				#'django.contrib.auth',
+				#'django.contrib.contenttypes',
+				#'django.contrib.sessions',
+				#'django.contrib.sites',
+				#'django.contrib.messages',
+				#'django.contrib.staticfiles',
+				"library.books",
+			)
+		5.python manage.py validate 验证模型有效性
+		6.python manage.py sqlall books生成CREATE TABLE语句
+		7.python manage.py syncdb 提交SQL语句到数据库
+		8.可以通过shell交互导入数据
+			>>> from books.models import Publisher
+			>>> p1 = Publisher(name='Apress', address='2855 Telegraph Avenue',
+			...     city='Berkeley', state_province='CA', country='U.S.A.',
+			...     website='http://www.apress.com/')
+			>>> p1.save()
+			>>> p2 = Publisher.objects.create(name="O'Reilly",
+			...     address='10 Fawcett St.', city='Cambridge',
+			...     state_province='MA', country='U.S.A.',
+			...     website='http://www.oreilly.com/')
+			>>> publisher_list = Publisher.objects.all() #查询语句
+			>>> publisher_list
+		9.Publisher.objects.filter对数据筛选
+		  Publisher.objects.get获取单个对象
+		  Publisher.objects.order_by对数据排序
+		  也可以用Publisher.objects.filter(country="U.S.A.").order_by("-name")进行连锁查询
+		  数据的删除：
+			  >>> p = Publisher.objects.get(name="O'Reilly")
+			  >>> p.delete()
