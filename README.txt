@@ -158,3 +158,16 @@ Tag(3.0)
 			5.fields定义需要显示的部分,可以用它隐藏掉不想被别人更改的部分
 			6.filter_horizontal JavaScript过滤器,允许检索选项,并且可以来回移动
 			7.raw_id_fields 它是一个包含外键字段名称的元组,它包含的字段将被展现成文本框,而不再是下拉框,可以减少下拉框因为数据太多导致缓慢的问题
+
+Tag(4.0)
+	表单的使用：
+		1.要知道视图函数的参数request的用法
+		2.forms类的使用：
+			class ContactForm(forms.Form):
+				subject = forms.CharField()
+				email = forms.EmailField(required=False)
+				message = forms.CharField()
+		  及一些as_ul,as_p,is_valid等方法的使用
+		3.forms类中的各个Field的参数使用：
+			required,widget,max_length等
+		4.自定义校验规则
