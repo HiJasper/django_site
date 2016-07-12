@@ -171,3 +171,6 @@ Tag(4.0)
 		3.forms类中的各个Field的参数使用：
 			required,widget,max_length等
 		4.自定义校验规则
+
+Tag(5.0)
+	1.URLconf 技巧 见urls.py
