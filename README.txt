@@ -174,3 +174,35 @@ Tag(4.0)
 
 Tag(5.0)
 	1.URLconf 技巧 见urls.py
+Tag(5.1)
+	1.命名组的使用：
+		用url(r'^name_groups/(?P<name>\w{1,20})/(?P<age>\d{1,2})/$', 'named_groups')表示关键字参数
+		其中named_groups(request, name, age),关键字要一致,这也和一般函数的关键字用法相同
+		如果有任何命名的组，Django会忽略非命名组而直接使用命名组
+	2.传递额外的参数到视图函数中：
+		如:
+			urlpatterns = patterns('',
+				(r'^foo/$', views.foobar_view, {'template_name': 'template1.html'}),
+				(r'^bar/$', views.foobar_view, {'template_name': 'template2.html'}),
+			)
+		在views.py中的试图函数的参数要和字典中的key一致
+	3.捕捉值和额外参数之间的优先级:
+		(r'^mydata/(?P<id>\d+)/$', views.my_view, {'id': 3})
+		?P<id>永远会被3覆盖
+	4.缺省视图参数：
+		urls.py:
+			urlpatterns = patterns('',
+				(r'^blog/$', views.page),
+				(r'^blog/page(?P<num>\d+)/$', views.page),
+			)
+		views.py:
+			def page(request, num='1'):
+		当匹配到blog/的时候,num使用缺省参数,num被赋值为'1',当/blog/pagex/被匹配时,num被赋值为被匹配到的值
+	5.特殊情况下的视图：
+		urlpatterns = patterns('',
+			('^auth/user/add/$', views.user_add_stage),
+			('^([^/]+)/([^/]+)/add/$', views.add_stage),
+		)
+		在这种情况下,象 /auth/user/add/ 的请求将会被 user_add_stage 视图处理.
+		尽管URL也匹配第二种模式,它会先匹配上面的模式.(这是短路逻辑)
+	6.从url中获得的参数值都是以字符串的类型传递给视图函数的

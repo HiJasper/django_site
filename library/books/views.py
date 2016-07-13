@@ -49,3 +49,11 @@ def contact(request):
 			initial={'subject': 'I love your site!'}
 		)
 	return render_to_response('contact_form.html', {'form': form})
+
+def  named_groups(request, name, age):
+	return HttpResponse('<table><tr><td>%s</td><td>%s</td></tr></table>' % (name, age))
+
+
+def foobar_view(request, template_name):
+	name = "Jasper"
+	return render_to_response(template_name, {'name': name})

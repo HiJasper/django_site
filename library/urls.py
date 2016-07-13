@@ -22,6 +22,15 @@ urlpatterns += patterns('',
     url(r'^admin/', include(admin.site.urls)),
 )
 
+urlpatterns += patterns('books.views',
+    url(r'^name_groups/(?P<name>\w{1,20})/(?P<age>\d{1,2})/$', 'named_groups'),
+)
+
+urlpatterns += patterns('books.views',
+    (r'^foo/$', 'foobar_view', {'template_name': 'template1.html'}),
+    (r'^bar/$', 'foobar_view', {'template_name': 'template2.html'}),
+)
+
 if settings.DEBUG:
     print "hahhahsdha"
     urlpatterns += patterns('books.views',
